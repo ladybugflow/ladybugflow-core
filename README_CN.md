@@ -5,15 +5,15 @@
 ![](https://img.shields.io/badge/license-Apache2.0-yellow)
 ![](https://img.shields.io/badge/Java-1.8-orange)
 
-Ladybug-Flow is a light workflow engine described by json and run in java enviroment,<br />
-Ladybug-Flow has an UI tool to draw a flow by drag and drop and generate to json config file.<br />
-Ladybug-Flow-UI can watch all workflow status in a UI view.
+Ladybugflow是一个java的工作流框架，<br />
+它可以在java中通过json运行工作流。<br />
+我们还支持UI工具来绘制流程并转换为json文件。
 
-[Basic Usage](README.md) | [Configuration](README_PROPERTIES.md) | [SpringBoot](README_SPRING_BOOT.md) | [SpringBatch](README_SPRING_BATCH.md)
+[基本使用](README_CN.md) | [Properties配置](README_CN_PROPERTIES.md) | [SpringBoot整合](README_CN_SPRING_BOOT.md) | [SpringBatch整合](README_CN_SPRING_BATCH.md)
 
-### 1. Usage
+### 1. 使用方法
 
-#### 1.1. Import
+#### 1.1. 导入依赖
 
 ##### Maven
 
@@ -32,23 +32,20 @@ Ladybug-Flow-UI can watch all workflow status in a UI view.
 implementation 'io.github.nobuglady:ladybugflow:0.0.10'
 ```
 
-#### 1.2. Generate flowchart
-There is a graphical tool under the directory [html/network.html] <br />
-that can help you generate a json file for Flow description.
+#### 1.2. 生成流程图
+在目录【html/network.html】下有一个图形工具可以帮助您生成Flow描述的json文件。
 
-Draw a flowchart
+画流程图
 
 <img src="https://github.com/nobuglady/nobuglady-network/blob/main/readme/4.gif?raw=true" alt="" width="400px"/>
 
-Convert flowchart to json
+将流程图转化成json
 
 <img src="https://github.com/nobuglady/nobuglady-network/blob/main/readme/5.gif?raw=true" alt="" width="400px"/>
 
-#### 1.3. Configuration
+#### 1.3. 程序配置
 
-You need to write a class that extends from FlowRunner, <br />
-and a json file describing the Flow process, <br />
-these two files need to be placed under the same package
+您需要写一个类继承自FlowRunner，和一个描述Flow流程的json文件，这两个文件需要放在相同的包下面
 
 ```
 src/main/java
@@ -143,25 +140,25 @@ public class MyFlow1 extends FlowRunner {
 
 </details>
 
-#### 1.4. Start
-The flow you define can be started by the following code
+#### 1.4. 启动
+通过下面的代码可以启动您定义的flow
 ```
 MyFlow1 myFlow1 =  new MyFlow1();
 myFlow1.startFlow();
 ```
-#### 1.5. Stop
-When the system stops, you need to call the following code to stop the flow management system
+#### 1.5. 停止
+系统停止的时候需要调用下面的代码来停止flow管理系统
 ```
 FlowStarter.shutdown();
 ```
 
-### 2. Run Result
+#### 1.6. 运行结果
 
-#### 2.1. Success log
+##### 成功日志
 
 
 <details>
-<summary>The following is the log file of the success log</summary>
+<summary>下面是运行成功的日志文件</summary>
 
 ```
 Ready queue thread started.
@@ -186,17 +183,16 @@ json:
 ```
 </details>
 
-After the process runs, a json string describing the process status will be output, <br />
-which can be pasted into a graphical tool to view the process running status.
+流程运行结束后，会输出描述流程状态的json字符串，可以把它粘贴到图形化工具里查看流程的运行状态。
 (green:success, red:error, white:waiting).
 
 <img src="https://github.com/nobuglady/nobuglady-network/blob/main/readme/2.gif?raw=true" alt="" width="400px"/>
 
-#### 2.2. Error log
+##### 错误日志
 
 
 <details>
-<summary>Below is the log file of the run error</summary>
+<summary>下面是运行错误的日志文件</summary>
 
 ```
 Ready queue thread started.
@@ -249,8 +245,7 @@ json:
 
 </details>
 
-After the process runs, a json string describing the process status will be output, <br />
-which can be pasted into a graphical tool to view the process running status.
+流程运行结束后，会输出描述流程状态的json字符串，可以把它粘贴到图形化工具里查看流程的运行状态。
 (green:success, red:error, white:waiting).
 
 <img src="https://github.com/nobuglady/nobuglady-network/blob/main/readme/3.gif?raw=true" alt="" width="400px"/>
